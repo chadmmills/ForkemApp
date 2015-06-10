@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503023146) do
+ActiveRecord::Schema.define(version: 20150610002750) do
+
+  create_table "mealbooks", force: :cascade do |t|
+    t.integer  "user_id",                       null: false
+    t.string   "mealbook_name",                 null: false
+    t.boolean  "public",        default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "mealbooks", ["user_id"], name: "index_mealbooks_on_user_id"
+
+  create_table "meals", force: :cascade do |t|
+    t.integer  "mealbook_id",              null: false
+    t.string   "meal_title",               null: false
+    t.text     "meal_notes",  default: ""
+    t.integer  "weekday",     default: 0
+    t.integer  "meal_type",   default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "meals", ["mealbook_id"], name: "index_meals_on_mealbook_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
