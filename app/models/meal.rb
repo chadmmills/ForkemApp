@@ -7,4 +7,12 @@ class Meal < ActiveRecord::Base
 
   validates :meal_title, presence: true
 
+  def self.weekdays_array
+    self.weekdays.keys.map { |weekday| [weekday.capitalize, weekday] }
+  end
+
+  def self.meal_types_array
+    self.meal_types.keys.map { |mt| [mt.capitalize, mt] }
+  end
+
 end
