@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get 'home/new'
   get 'home/index'
 
-  root 'home#index'
+  authenticated :user do
+    root to: 'meal_books#index', as: :authenticated_root
+  end
+
+
+  root to: 'home#index'
 
 end
