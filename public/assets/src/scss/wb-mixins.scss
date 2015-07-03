@@ -1,0 +1,33 @@
+
+////// Showing Images
+img {
+	// Default: max width of an image set to 100%
+	max-width: 100%;
+}
+
+// vert center, full page, difficult element sizing things
+.abs-full {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-size: cover;
+}
+.vertc-parent {
+	position: relative;
+	.vertc-child {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+.full-screen-fixed {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+}
+
+.u-center {
+	text-align: center;
+}

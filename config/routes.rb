@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :meals
+  resources :meal_books
 
   get 'home/new'
   get 'home/index'

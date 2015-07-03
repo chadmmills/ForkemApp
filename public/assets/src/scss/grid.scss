@@ -1,0 +1,63 @@
+@import "_variables";
+
+$colcount: map-get($susy, "columns");
+
+$breakpoint_widths: (
+	xs: 340,
+	sm: 560,
+	md: 768,
+	lg: 960,
+	xl: 1180,
+);
+
+$breakpoints: (
+	xs: "only screen and (min-width: #{map-get($breakpoint_widths, 'xs')}px)",
+	sm: "only screen and (min-width: #{map-get($breakpoint_widths, 'sm')}px)",
+	md: "only screen and (min-width: #{map-get($breakpoint_widths, 'md')}px)",
+	lg: "only screen and (min-width: #{map-get($breakpoint_widths, 'lg')}px)",
+	xl: "only screen and (min-width: #{map-get($breakpoint_widths, 'xl')}px)",
+);
+
+@include layout($susy float inside);
+
+.container {
+	position: relative;
+	clear: both;
+	margin: 0 auto;
+}
+
+
+@each $breakpoint, $breakpoint_def in $breakpoints {
+	@media #{map-get($breakpoints, $breakpoint)} {
+		.container {
+			width: (map-get($breakpoint_widths, $breakpoint) - $grid_breakpoint_space) * 1px;
+		}
+		// Set up zero-pads and zero-margins
+		.vm-#{$breakpoint}-top-0 { margin-top: 0; }
+		.vm-#{$breakpoint}-bottom-0 { margin-bottom: 0; }
+		.vp-#{$breakpoint}-top-0 { padding-top: 0; }
+		.vp-#{$breakpoint}-bottom-0 { padding-bottom: 0; }
+
+		// Grid scaffold
+		@for $i from 1 through $colcount {
+			.col-#{$breakpoint}-#{$i} {
+				@include span($i of $colcount);
+			}
+			.col-#{$breakpoint}-offset-#{$i} {
+				@include push($i of $colcount);
+			}
+			.vp-#{$breakpoint}-top-#{$i} {
+				padding-top: $vertical-pad-base * $i;
+			}
+			.vp-#{$breakpoint}-bottom-#{$i} {
+				padding-bottom: $vertical-pad-base * $i;
+			}
+			.vm-#{$breakpoint}-top-#{$i} {
+				margin-top: $vertical-pad-base * $i;
+			}
+			.vm-#{$breakpoint}-bottom-#{$i} {
+				margin-bottom: $vertical-pad-base * $i;
+			}
+		}
+	}
+}
