@@ -10,6 +10,5 @@ feature 'As a new user I can sign up' do
     click_button "Sign up"
 
     expect(page).to have_content "MealBooks"
-
   end
 end

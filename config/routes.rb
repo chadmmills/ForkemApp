@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :meals
-  resources :meal_books
+  resources :mealbooks
 
   get 'home/new'
   get 'home/index'
 
   authenticated :user do
-    root to: 'meal_books#index', as: :authenticated_root
+    root to: 'mealbooks#index', as: :authenticated_root
   end
 
 
