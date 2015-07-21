@@ -1,6 +1,9 @@
-%div{ :class => 'row' }
-  %div{ :class => 'col-sm-8 col-sm-offset-2 u-center' }
+.row
+  .col-sm-8.col-sm-offset-2.u-center
     %h1 MealBooks!
+.row
+  .col-sm-8.col-sm-offset-2.u-center
+    = render current_user.mealbooks
 .row
   .col-sm-8.col-sm-offset-2.u-center
     = render "mealbooks/form", mealbook: Mealbook.new

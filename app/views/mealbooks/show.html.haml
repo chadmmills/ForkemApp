@@ -1,3 +1,6 @@
 %h1= mealbook.mealbook_name
 
 %p Lets create some meals!
+= link_to "New Meal", new_mealbook_meal_path(mealbook)
+
+= render mealbook.meals

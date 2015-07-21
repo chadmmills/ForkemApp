@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :meals
-  resources :mealbooks
+  resources :mealbooks do
+    resources :meals
+  end
 
   get 'home/new'
   get 'home/index'
