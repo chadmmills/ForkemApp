@@ -23,8 +23,6 @@ class MealsController < ApplicationController
     def meal_params
       params.require(:meal).permit(
         :meal_title,
-        :weekday,
-        :meal_type,
         :meal_notes,
       ).merge(mealbook: mealbook)
     end

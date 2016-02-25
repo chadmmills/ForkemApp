@@ -2,6 +2,8 @@ class Meal < ActiveRecord::Base
 
   belongs_to :mealbook
 
+  has_many :meal_assignments
+
   enum weekday: [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday]
   enum meal_type: [:breakfast, :lunch, :dinner, :snack]
 

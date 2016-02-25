@@ -6,6 +6,7 @@ class MealbooksController < ApplicationController
   end
 
   def show
+    render locals: { mealbook: mealbook_presenter } 
   end
 
   def create
@@ -29,6 +30,9 @@ class MealbooksController < ApplicationController
   def mealbook
     @mealbook ||= Mealbook.find(params[:id])
   end
-  helper_method :mealbook
+
+  def mealbook_presenter
+    @_mealbook_presenter ||= MealbookPresenter.new(mealbook)
+  end
 
 end

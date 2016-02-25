@@ -1,0 +1,43 @@
+.week-wrapper {
+  display: flex;
+  min-height: 80vh;
+}
+
+.weekdays {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  padding: 0px 50px;
+  overflow-x: scroll;
+}
+
+.meal {
+  padding: 20px;
+  border-radius: 2px;
+  background: white;
+  box-shadow: 0 2px 1px rgba(170, 170, 170, 0.25);
+}
+
+.weekday {
+  @extend .meal;
+  min-width: 300px;
+  margin-right: 20px;
+
+  &-title {
+    text-align: center;
+  }
+
+  .weekday-meals {
+  }
+}
+.meals__available-list {
+  min-width: 300px;
+  padding: 10px;
+  background-color: #eee;
+
+  .meal {
+    margin-bottom: 10px;
+  }
+}
+.meals__available-list {}
+.meal {}
