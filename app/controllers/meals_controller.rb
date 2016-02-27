@@ -4,20 +4,21 @@ class MealsController < ApplicationController
   end
 
   def new
+    render locals: { meal: Meal.new }
   end
 
   def create
     if new_meal.save
       redirect_to mealbook, notice: "Meal was saved"
     else
-      render :new
+      render :new, locals: { meal: new_meal }
     end
   end
 
   private
 
     def new_meal
-      @meal ||= Meal.new(meal_params)
+      @_meal ||= Meal.new(meal_params)
     end
 
     def meal_params
@@ -28,7 +29,7 @@ class MealsController < ApplicationController
     end
 
     def mealbook
-      @mealbook ||= Mealbook.find(params[:mealbook_id])
+      @_mealbook ||= Mealbook.find(params[:mealbook_id])
     end
     helper_method :mealbook
 

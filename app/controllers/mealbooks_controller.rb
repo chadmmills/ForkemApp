@@ -26,11 +26,11 @@ class MealbooksController < ApplicationController
   end
 
   def new_mealbook
-    @new_mealbook ||= Mealbook.new(mealbook_params)
+    @_new_mealbook ||= Mealbook.new(mealbook_params)
   end
 
   def mealbook
-    @mealbook ||= Mealbook.find(params[:id])
+    @_mealbook ||= Mealbook.find(params[:id])
   end
 
   def mealbook_presenter
