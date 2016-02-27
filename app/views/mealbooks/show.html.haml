@@ -1,12 +1,9 @@
-%h1= mealbook.mealbook_name
-
-%p Lets create some meals!
-= link_to "New Meal", new_mealbook_meal_path(mealbook)
-
+- content_for(:page_title) do
+  - mealbook.mealbook_name
 
 .week-wrapper
   .weekdays
     = render mealbook.week_days
   .meals__available-list
-    .meal-list
+    .meal-list#draggable-meals
       = render partial: "meal", collection: mealbook.meals_with_no_assignment_for_current_week

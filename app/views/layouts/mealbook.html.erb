@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Forkem</title>
+    <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <nav>
+          <div class="nav__mealbook-title"><%= content_for(:page_title) || "Mealbooks" %></div>
+        </nav>
+      </header>
+      <%= yield %>
+    </div> 
+  </body>
+</html>
