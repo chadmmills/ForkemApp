@@ -3,13 +3,23 @@ class Dragem
     @drake = @initializeDragula()
 
   initializeDragula: ->
-    dragula( @_draggableElements() )
+    dragula
+      isContainer: (el) => @_validateContainer(el)
 
-  _draggableElements: =>
-    @_draggableIds().map (id) ->
-      document.getElementById(id)
+  _validateContainer: (el) =>
+    if el.id and @_isADraggableContainer(el)
+      @_mealNotAssignedForContainer(el)
+    else
+      false
 
-  _draggableIds: ->
+  _isADraggableContainer: (el) ->
+    el.id in @_draggableIds
+
+  _mealNotAssignedForContainer: (target) ->
+    return true if target.id is "draggable-meals"
+    $(target).find(".meal").length is 0
+
+  _draggableIds:
     [
       "monday",
       "tuesday",
@@ -22,5 +32,5 @@ class Dragem
     ]
 
 
-$(document).on "ready page:change", ->
+$(document).on "ready page:load", ->
   new Dragem if $('.meals__available-list').length > 0
