@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :meals
   end
 
+  resources :meal_assignments, only: :create
+
   get 'home/new'
   get 'home/index'
 

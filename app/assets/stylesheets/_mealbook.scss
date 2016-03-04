@@ -36,6 +36,8 @@
 }
 
 .weekday {
+  display: flex;
+  flex-direction: column;
   @extend .meal;
   min-width: 300px;
   margin-right: 20px;
@@ -44,7 +46,12 @@
     text-align: center;
   }
 
+  .meal + .meal.gu-transit {
+    display: none;
+  }
+
   .weekday-meals {
+    flex: 1;
   }
 }
 .meals__available-list {
@@ -54,6 +61,9 @@
 
   .meal {
     margin-bottom: 10px;
+    &:hover {
+      cursor: move;
+    }
   }
 }
 .meals__available-list {}

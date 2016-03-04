@@ -29,6 +29,10 @@ class MealbookPresenter < SimpleDelegator
         title.downcase
       end
 
+      def date
+        weekday
+      end
+
       def title
         weekday.strftime "%A"
       end

@@ -15,5 +15,10 @@ FactoryGirl.define do
     meal_title "Chicken Something-or-nother"
     mealbook
   end
+
+  factory :meal_assignment do
+    meal
+    assigned_on Date.today
+  end
 end
 
