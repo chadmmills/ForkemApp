@@ -18,13 +18,15 @@ class MealbookPresenter < SimpleDelegator
 
   def current_week_meals
     @_weekday_meals ||= meals.
-      joins(:meal_assignments).
-      select("meals.*").
-      select("meal_assignments.assigned_on")
+                        joins(:meal_assignments).
+                        select("meals.*").
+                        select("meal_assignments.assigned_on")
   end
 
   def current_week_meal_assignment_ids
-    meal_assignments.where(assigned_on: today.beginning_of_week..today.end_of_week).select(:meal_id)
+    meal_assignments.where(
+      assigned_on: today.beginning_of_week..today.end_of_week
+    ).select(:meal_id)
   end
 
   def today
