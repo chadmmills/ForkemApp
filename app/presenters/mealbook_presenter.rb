@@ -2,7 +2,7 @@ class MealbookPresenter < SimpleDelegator
 
   def week_days
     (today.beginning_of_week.to_date..today.end_of_week.to_date).map do |day|
-      Weekday.new(day)
+      Weekday.new(day, meal_for_weekday(day))
     end
   end
 
@@ -11,6 +11,17 @@ class MealbookPresenter < SimpleDelegator
   end
 
   private
+
+    def meal_for_weekday(day)
+      current_week_meals.detect { |meal| meal.assigned_on == day }
+    end
+
+    def current_week_meals
+      @_weekday_meals ||= meals.
+                          joins(:meal_assignments).
+                          select("meals.*").
+                          select("meal_assignments.assigned_on")
+    end
 
     def current_week_meal_assignment_ids
       meal_assignments.where(assigned_on: today.beginning_of_week..today.end_of_week).select(:meal_id)
@@ -21,8 +32,11 @@ class MealbookPresenter < SimpleDelegator
     end
 
     class Weekday
-      def initialize(week_day)
+      attr_reader :meal
+
+      def initialize(week_day, meal)
         @weekday = week_day
+        @meal = meal
       end
 
       def id
