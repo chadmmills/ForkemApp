@@ -7,7 +7,11 @@ RSpec.describe MealbookPresenter do
       monday_meal = create :meal, mealbook: mealbook
       create :meal_assignment, meal: monday_meal, assigned_on: Date.today.monday
       tuesday_meal = create :meal, mealbook: mealbook
-      create :meal_assignment, meal: tuesday_meal, assigned_on: Date.today.monday + 1
+      create(
+        :meal_assignment,
+        meal: tuesday_meal,
+        assigned_on: Date.today.monday + 1
+      )
 
       expect(
         MealbookPresenter.new(mealbook).week_days.second.meal
