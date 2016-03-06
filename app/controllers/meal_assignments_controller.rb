@@ -6,6 +6,11 @@ class MealAssignmentsController < ApplicationController
     head :ok
   end
 
+  def destroy
+    MealAssignment.find(params[:id]).destroy!
+    head :ok
+  end
+
   private
 
     def meal
