@@ -2,6 +2,8 @@
   %h3.weekday-title= week_day.title
   .weekday-meals{ id: week_day.id,
     data: { weekday_date: week_day.date,
-    assignment_id: week_day.assignment_id, assignment_url: meal_assignments_path } }
+    assignment_id: week_day.assignment_id,
+    assignment_url: meal_assignments_path } }
+
     - if week_day.meal
       = render "meal", meal: week_day.meal

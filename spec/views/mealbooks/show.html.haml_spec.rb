@@ -20,7 +20,7 @@ RSpec.describe "mealbooks/show" do
 
   it "should show the remove icon within a weekday but not unassigned list" do
     mealbook = create :mealbook
-    unassigned_meal = create :meal, mealbook: mealbook
+    create :meal, mealbook: mealbook
     tuesday_meal = create :meal, mealbook: mealbook
     create(
       :meal_assignment,

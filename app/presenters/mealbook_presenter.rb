@@ -20,7 +20,8 @@ class MealbookPresenter < SimpleDelegator
     @_weekday_meals ||= meals.
                         joins(:meal_assignments).
                         select("meals.*").
-                        select("assigned_on, meal_assignments.id AS meal_assignment_id")
+                        select("assigned_on").
+                        select("meal_assignments.id AS meal_assignment_id")
   end
 
   def current_week_meal_assignment_ids
