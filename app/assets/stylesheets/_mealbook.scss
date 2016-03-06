@@ -29,10 +29,15 @@
 }
 
 .meal {
+  position: relative;
   padding: 20px;
   border-radius: 2px;
   background: white;
   box-shadow: 0 2px 1px rgba(170, 170, 170, 0.25);
+
+  .meal-unassign {
+    display: none;
+  }
 }
 
 .weekday {
@@ -52,6 +57,18 @@
 
   .weekday-meals {
     flex: 1;
+
+    .meal {
+      .meal-unassign {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 .meals__available-list {
@@ -63,6 +80,10 @@
     margin-bottom: 10px;
     &:hover {
       cursor: move;
+    }
+
+    .meal-unassign {
+      display: none;
     }
   }
 }
