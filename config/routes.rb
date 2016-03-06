@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :meals
   end
 
-  resources :meal_assignments, only: :create
+  resources :meal_assignments, only: [:create, :destroy]
 
   get 'home/new'
   get 'home/index'

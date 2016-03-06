@@ -22,6 +22,16 @@ RSpec.describe MealAssignmentsController, type: :controller do
         expect(meal_assignment.meal).to eq meal
       end
     end
+
+    describe "DELETE destroy" do
+      it "should remove the meal assignment" do
+        meal_assignment = create(:meal_assignment)
+
+        expect do
+          delete :destroy, id: meal_assignment.id
+        end.to change(MealAssignment, :count).by(-1)
+      end
+    end
   end
 
 end
