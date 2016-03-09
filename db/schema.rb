@@ -68,4 +68,6 @@ ActiveRecord::Schema.define(version: 20160221151859) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "meal_assignments", "meals"
+  add_foreign_key "mealbooks", "users"
+  add_foreign_key "meals", "mealbooks"
 end

@@ -6,11 +6,26 @@
     min-height: 50px;
     background-color: $main-green;
     width: 100%;
-    .nav__mealbook-title {
-      text-align: center;
-      line-height: 50px;
-      color: white;
-      font-size: 1.6em;
+    nav {
+      display: flex;
+
+      .nav__mealbook-new {
+        line-height: 45px;
+        min-width: 50px;
+        text-align: center;
+        a {
+          color: white;
+          font-size: 2em;
+          text-decoration: none;
+        }
+      }
+      .nav__mealbook-title {
+        flex: 1;
+        text-align: center;
+        line-height: 50px;
+        color: white;
+        font-size: 1.6em;
+      }
     }
   }
 }

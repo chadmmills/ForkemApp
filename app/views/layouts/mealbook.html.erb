@@ -10,7 +10,13 @@
     <div class="app-container">
       <header>
         <nav>
+          <div class="nav__mealbook-new">
+            <% if params[:action] == "show" %>
+              <%= link_to "+", new_mealbook_meal_path(mealbook) %>
+            <% end %>
+          </div>
           <div class="nav__mealbook-title"><%= content_for(:page_title) || "Mealbooks" %></div>
+          <div class="nav__mealbook-other"></div>
         </nav>
       </header>
       <%= yield %>
