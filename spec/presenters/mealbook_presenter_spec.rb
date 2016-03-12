@@ -22,8 +22,12 @@ RSpec.describe MealbookPresenter do
   describe '#available_meals' do
     it "should return all meals available for the week" do
       mealbook = create :mealbook
-      meal_with_assignment = create :meal, mealbook: mealbook, meal_title: "Title 2"
-      meal_without_assignemt = create :meal, mealbook: mealbook, meal_title: "Title 1"
+      meal_with_assignment = create(
+        :meal, mealbook: mealbook, meal_title: "Title 2"
+      )
+      meal_without_assignemt = create(
+        :meal, mealbook: mealbook, meal_title: "Title 1"
+      )
 
       MealAssignment.create! meal: meal_with_assignment, assigned_on: Date.today
 

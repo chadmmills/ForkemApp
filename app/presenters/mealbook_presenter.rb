@@ -22,7 +22,11 @@ class MealbookPresenter < SimpleDelegator
                         select("meals.*").
                         select("assigned_on").
                         select("meal_assignments.id AS meal_assignment_id").
-                        where(meal_assignments: { assigned_on: today.beginning_of_week..today.end_of_week })
+                        where(
+                          meal_assignments: { 
+                            assigned_on: today.beginning_of_week..today.end_of_week
+                          }
+                        )
 
   end
 
