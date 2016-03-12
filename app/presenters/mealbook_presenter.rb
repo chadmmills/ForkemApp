@@ -6,8 +6,8 @@ class MealbookPresenter < SimpleDelegator
     end
   end
 
-  def meals_with_no_assignment_for_current_week
-    meals.where.not(id: current_week_meal_assignment_ids)
+  def available_meals
+    meals.by_title
   end
 
   private
@@ -21,13 +21,9 @@ class MealbookPresenter < SimpleDelegator
                         joins(:meal_assignments).
                         select("meals.*").
                         select("assigned_on").
-                        select("meal_assignments.id AS meal_assignment_id")
-  end
+                        select("meal_assignments.id AS meal_assignment_id").
+                        where(meal_assignments: { assigned_on: today.beginning_of_week..today.end_of_week })
 
-  def current_week_meal_assignment_ids
-    meal_assignments.where(
-      assigned_on: today.beginning_of_week..today.end_of_week
-    ).select(:meal_id)
   end
 
   def today
