@@ -8,6 +8,7 @@ class Dragem
   initializeDragula: ->
     dragula
       containers: @_draggableContainerElements(),
+      copy: true,
 
   _validateMealAssignment: (el, target) =>
     if target.id and @_isADraggableContainer(target)

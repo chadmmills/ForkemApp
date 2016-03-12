@@ -1,5 +1,7 @@
 class Meal < ActiveRecord::Base
 
+  scope :by_title, -> { order(:meal_title) }
+
   belongs_to :mealbook
 
   has_many :meal_assignments
