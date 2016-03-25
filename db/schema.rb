@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221151859) do
+ActiveRecord::Schema.define(version: 20160325135255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", force: :cascade do |t|
+    t.integer  "meal_id",         null: false
+    t.string   "ingredient_name", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "ingredients", ["meal_id"], name: "index_ingredients_on_meal_id", using: :btree
 
   create_table "meal_assignments", force: :cascade do |t|
     t.date     "assigned_on", null: false
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160221151859) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "ingredients", "meals"
   add_foreign_key "meal_assignments", "meals"
   add_foreign_key "mealbooks", "users"
   add_foreign_key "meals", "mealbooks"
