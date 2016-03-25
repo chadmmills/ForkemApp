@@ -25,6 +25,11 @@ class MealsController < ApplicationController
       params.require(:meal).permit(
         :meal_title,
         :meal_notes,
+        ingredients_attributes: [
+          :id,
+          :ingredient_name,
+          :_destroy,
+        ]
       ).merge(mealbook: mealbook)
     end
 

@@ -5,6 +5,13 @@ class Meal < ActiveRecord::Base
   belongs_to :mealbook
 
   has_many :meal_assignments
+  has_many :ingredients
+
+  accepts_nested_attributes_for(
+    :ingredients,
+    reject_if: :all_blank,
+    allow_destroy: true
+  )
 
   enum weekday: [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday]
   enum meal_type: [:breakfast, :lunch, :dinner, :snack]
