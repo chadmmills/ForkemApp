@@ -5,7 +5,8 @@
 .flex.justify-center
   .bg-white.w75-pc.max-width-2.p2.mt4
     %h2.h2.m0.center New Meal
-    %h4.h4.mt1.center.regular= link_to "#{mealbook.mealbook_name} - Mealbook", mealbook
+    %h4.h4.mt1.center.regular
+      = link_to "#{mealbook.mealbook_name} - Mealbook", mealbook
     = simple_form_for [mealbook, meal], html: { class: "form-horizontal"} do |f|
       = f.input :meal_title
       = f.input :meal_notes
