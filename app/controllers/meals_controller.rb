@@ -1,5 +1,7 @@
 class MealsController < ApplicationController
 
+  layout "mealbook"
+
   def index
   end
 
