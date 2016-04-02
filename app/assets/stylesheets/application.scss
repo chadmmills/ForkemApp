@@ -1,6 +1,9 @@
 /* NO SPROCKETS */
+@import "basscss/basscss";
+@import "basscss/forms";
 
 $main-green: #33CC99;
+$white: #fff;
 
 @import "dragula";
 @import "home";
@@ -19,4 +22,37 @@ body {
   margin: 0;
   height: 100%;
   background-color: #f5f5f5;;
+}
+
+a {
+  color: $main-green;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.w75-pc { width: 75%; }
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-green {
+  background-color: $main-green;
+}
+
+.btn {
+  border: none;
+  color: $white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.error {
+  color: red;
+  display: block;
 }
