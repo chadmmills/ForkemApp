@@ -28,7 +28,7 @@ class MealbookPresenter < SimpleDelegator
   def next_week
     (first_day_of_week + 1.week).to_date
   end
-  
+
   def week_days
     week_range.map do |day|
       Weekday.new(day, meal_for_weekday(day))
