@@ -1,7 +1,36 @@
 class MealbookPresenter < SimpleDelegator
 
+  def initialize(mealbook:, week:)
+    __setobj__(mealbook)
+    @week = week
+  end
+
+  def current_week_title
+    first_day_of_week.strftime("%A - %B #{first_day_of_week.day.ordinalize}")
+  end
+
+  def first_day_of_week
+    @week.beginning_of_week
+  end
+
+  def last_day_of_week
+    @week.end_of_week
+  end
+
+  def week_range
+    first_day_of_week..last_day_of_week
+  end
+
+  def prev_week
+    (first_day_of_week - 1.week).to_date
+  end
+
+  def next_week
+    (first_day_of_week + 1.week).to_date
+  end
+  
   def week_days
-    (today.beginning_of_week.to_date..today.end_of_week.to_date).map do |day|
+    week_range.map do |day|
       Weekday.new(day, meal_for_weekday(day))
     end
   end
@@ -28,13 +57,9 @@ class MealbookPresenter < SimpleDelegator
       select("meal_assignments.id AS meal_assignment_id").
       where(
         meal_assignments: {
-          assigned_on: today.beginning_of_week..today.end_of_week
+          assigned_on: week_range
         }
       )
-  end
-
-  def today
-    Time.zone.now
   end
 
   class Weekday
@@ -51,6 +76,10 @@ class MealbookPresenter < SimpleDelegator
 
     def date
       weekday
+    end
+
+    def formatted_date
+      weekday.strftime("%b #{weekday.day.ordinalize}")
     end
 
     def title

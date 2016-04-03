@@ -1,5 +1,6 @@
 .weekday
-  %h3.weekday-title= week_day.title
+  %h3.mt0.weekday-title= week_day.title
+  %h5.mt0.center.gray= week_day.formatted_date
   .weekday-meals{ id: week_day.id,
     data: { weekday_date: week_day.date,
     assignment_id: week_day.assignment_id,

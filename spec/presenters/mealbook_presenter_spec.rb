@@ -14,7 +14,7 @@ RSpec.describe MealbookPresenter do
       )
 
       expect(
-        MealbookPresenter.new(mealbook).week_days.second.meal
+        MealbookPresenter.new(mealbook: mealbook, week: Date.today).week_days.second.meal
       ).to eq tuesday_meal
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe MealbookPresenter do
       MealAssignment.create! meal: meal_with_assignment, assigned_on: Date.today
 
       expect(
-        MealbookPresenter.new(mealbook).available_meals
+        MealbookPresenter.new(mealbook: mealbook, week: Date.today).available_meals
       ).to eq [meal_without_assignemt, meal_with_assignment]
     end
   end

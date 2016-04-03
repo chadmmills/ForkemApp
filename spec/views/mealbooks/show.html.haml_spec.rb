@@ -12,7 +12,7 @@ RSpec.describe "mealbooks/show" do
 
     render(
       template: "mealbooks/show",
-      locals: { mealbook: MealbookPresenter.new(mealbook) }
+      locals: { mealbook: MealbookPresenter.new(mealbook: mealbook, week: Date.today) }
     )
 
     expect(rendered).to have_css "#tuesday .meal"
@@ -30,7 +30,7 @@ RSpec.describe "mealbooks/show" do
 
     render(
       template: "mealbooks/show",
-      locals: { mealbook: MealbookPresenter.new(mealbook) }
+      locals: { mealbook: MealbookPresenter.new(mealbook: mealbook, week: Date.today) }
     )
 
     expect(rendered).to have_css "#tuesday .meal .meal-unassign"

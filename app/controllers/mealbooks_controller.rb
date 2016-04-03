@@ -34,7 +34,18 @@ class MealbooksController < ApplicationController
   end
 
   def mealbook_presenter
-    @_mealbook_presenter ||= MealbookPresenter.new(mealbook)
+    @_mealbook_presenter ||= MealbookPresenter.new(
+      mealbook: mealbook,
+      week: requested_week
+    )
+  end
+
+  def requested_week
+    if params[:week]
+      Date.parse(params[:week])
+    else
+      Time.zone.now.to_date
+    end
   end
 
 end
