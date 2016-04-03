@@ -4,12 +4,7 @@
 .week-wrapper
   .week-main
     .week-title
-      %h3.center.mx-auto.mb0.max-width-2
-        = link_to  mealbook_path(mealbook, week: mealbook.prev_week), class: "arrow-left js-prev-week" do
-          &#9666
-        = mealbook.current_week_title
-        = link_to  mealbook_path(mealbook, week: mealbook.next_week), class: "arrow-right js-next-week" do
-          &#9656
+      = render "weekday_title", mealbook: mealbook
 
     .weekdays-wrapper
       .weekdays
