@@ -12,7 +12,7 @@ RSpec.describe "mealbooks/show" do
 
     render(
       template: "mealbooks/show",
-      locals: { 
+      locals: {
         mealbook: MealbookPresenter.new(mealbook: mealbook, week: Date.today)
       }
     )
@@ -32,7 +32,7 @@ RSpec.describe "mealbooks/show" do
 
     render(
       template: "mealbooks/show",
-      locals: { 
+      locals: {
         mealbook: MealbookPresenter.new(mealbook: mealbook, week: Date.today)
       }
     )
