@@ -2,8 +2,13 @@
   - mealbook.mealbook_name
 
 .week-wrapper
-  .weekdays
-    = render mealbook.week_days
+  .week-main
+    .week-title
+      = render "weekday_title", mealbook: mealbook
+
+    .weekdays-wrapper
+      .weekdays
+        = render mealbook.week_days
   .meals__available-list
     .meal-list#draggable-meals
       = render partial: "meal", collection: mealbook.available_meals
